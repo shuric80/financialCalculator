@@ -1,0 +1,53 @@
+
+
+.Calculator {
+    background-color: rgba(73,171,165,0.11);
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+
+    legend {
+        color: #49aba5;
+        font-size: 30px;
+    }
+
+    label {
+        color: #303030;
+        font-weight: 700;
+        font-size: inherit;
+    }
+
+    select {
+        width: 30%;
+        padding: 2px 12px 2px 2px;
+        background-color: #fff;
+        border: 1px solid #bbb;
+        color: #4e4e4e;
+    }
+}
+
+
+
+
+.Required {
+    color: #790000;
+    margin-left: 4px;
+}
+
+.Button {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(255, 200, 57);
+    color: rgb(6, 54, 156);
+    border-width: 0px !important;
+    text-transform: uppercase !important;
+
+    &:hover {
+        background-color: rgba(234, 70, 0, 0.84);
+
+    }
+}
+
+.Icon {
+    width: 40px;
+    margin-right: 20px;
+    margin-left: 4px;
+}
