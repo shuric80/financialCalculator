@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  storybook:
+    image: "node:12"
+    volumes:
+      - type: bind
+        source: .
+        target: /src
+        consistency: delegated
+    ports:
+    - "9009:9009"
+    working_dir: /src
+    command: "bash -c 'yarn install && yarn start'"
