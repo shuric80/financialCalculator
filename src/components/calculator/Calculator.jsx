@@ -20,36 +20,44 @@ function Calculator(props){
           <fieldset>
             <legend>Profit Calculator</legend>
             <div className={cn(styles.FlexContainer)}>
-              <p>
-                <label for='totalPayID'>Initial Investment<span className={cn(styles.Required)}>*</span></label></p>
-              <select name="totalPay" id="totalPayID" className={cn(styles.Select)}>
-                { total.map((value) => (<option value="{value}">$ {value}</option>))}
-              </select>
+              <div className={cn(styles.FlexRow)}>
+                <div className={cn(styles.FlexCell)}>
 
-              <p>
-                <label for="yearsID">Projection years<span className={cn(styles.Required)}>*</span>
-                </label>
-              </p>
-              <select name='yearsPay'id="yearsID" className={cn(styles.Select)}>
-                {years.map((value) => (<option value="{value}">{value} years</option>)) }
-              </select>
+                  <label for='totalPayID'>Initial Investment<span className={cn(styles.Required)}>*</span></label>
+                  <select name="totalPay" id="totalPayID" className={cn(styles.Select)}>
+                    { total.map((value) => (<option value="{value}">$ {value}</option>))}
+                  </select>
+                </div>
+                <div className={cn(styles.FlexCell)}>
 
-              <p>
-                <label for="profitIdPay">What % of your profits would you like to reinvest?<span className={cn(styles.Required)}>*</span>
-                </label>
-              </p>
-              <select id='profitIdPay' className={cn(styles.Select)}>
-                {profits.map((value) => (<option value="{value}">{value}%</option>)) }
-              </select>
+                  <label for="yearsID">Projection years<span className={cn(styles.Required)}>*</span>
+                  </label>
 
-              <p>
-                <label for="periodIdPay">Starting Date<span className={cn(styles.Required)}>*</span>
-                </label>
-              </p>
+                  <select name='yearsPay'id="yearsID" className={cn(styles.Select)}>
+                    {years.map((value) => (<option value="{value}">{value} years</option>)) }
+                  </select>
+                </div>
+              </div>
+              <div className={cn(styles.FlexRow)}>
+                <div className={cn(styles.FlexCell)}>
 
-              <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
-              <div className={cn(styles.CalendarIcon)}></div>
+                  <label for="profitIdPay">What % of your profits would you like to reinvest?<span className={cn(styles.Required)}>*</span>
+                  </label>
 
+                  <select id='profitIdPay' className={cn(styles.Select)}>
+                    {profits.map((value) => (<option value="{value}">{value}%</option>)) }
+                  </select>
+                </div>
+                <div className={cn(styles.FlexCell)}>
+
+                  <label for="periodIdPay">Starting Date<span className={cn(styles.Required)}>*</span>
+                  </label>
+
+
+                  <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
+                  <div className={cn(styles.CalendarIcon)}></div>
+                </div>
+              </div>
               <p>
                 <label>Consent<span className={cn(styles.Required)}>*</span>
                 </label>
