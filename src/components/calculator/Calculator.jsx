@@ -50,10 +50,10 @@ function Calculator(props){
 
                   <label for="periodIdPay">Starting Date<span className={cn(styles.Required)}>*</span>
                   </label>
-
-
-                  <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
-                  <div className={cn(styles.CalendarIcon)}></div>
+                  <div className={cn(styles.FlexRow)}>
+                    <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
+                    <div className={cn(styles.CalendarIcon)}></div>
+                  </div>
                 </div>
               </div>
               <div className={cn(styles.FlexRow)}>
