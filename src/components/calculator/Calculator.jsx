@@ -58,12 +58,16 @@ function Calculator(props){
                   <div className={cn(styles.CalendarIcon)}></div>
                 </div>
               </div>
-              <p>
-                <label>Consent<span className={cn(styles.Required)}>*</span>
-                </label>
-              </p>
-              <input type='checkbox' id='okId'/>
-              <span>I understand that this calculator is for demostration purpose only and does not guarantee any results.</span>
+              <div className={cn(styles.FlexRow)}>
+                <div className={cn(styles.FlexCel)}>
+                  <label>Consent<span className={cn(styles.Required)}>*</span>
+                  </label>
+
+                  <input type='checkbox' id='okId'/>
+                  <span>I understand that this calculator is for demostration purpose only and does not guarantee any results.</span>
+
+                </div>
+              </div>
               <p>
                 <button className={cn(styles.Button)} type='submit'><span className={cn(styles.Icon)}>&#x2B95;</span>calculate profit</button>
               </p>

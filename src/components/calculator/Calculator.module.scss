@@ -26,6 +26,13 @@
 
     input {
         width: 120px;
+
+
+
+        &[type='checkbox']{
+            width: 20px;
+            margin-right: 10px;
+        }
     }
 }
 
@@ -76,7 +83,7 @@
 .FlexRow {
     display: flex;
     flex-direction: row;
-  }
+}
 
 .FlexCell {
     width: 100%;
@@ -84,4 +91,4 @@
     select {
         width: 100%;
     }
- }
+}
