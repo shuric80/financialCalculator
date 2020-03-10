@@ -14,10 +14,10 @@
         color: #303030;
         font-weight: 700;
         font-size: inherit;
+        margin-bottom: 10px;
     }
 
     select, input {
-        width: 30%;
         padding: 2px 12px 2px 2px;
         background-color: #fff;
         border: 1px solid #bbb;
@@ -68,14 +68,20 @@
 .FlexContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
 
 }
 
 .FlexRow {
-
-
-}
+    display: flex;
+    flex-direction: row;
+  }
 
 .FlexCell {
-
-}
+    width: 100%;
+    margin: 10px;
+    select {
+        width: 100%;
+    }
+ }
