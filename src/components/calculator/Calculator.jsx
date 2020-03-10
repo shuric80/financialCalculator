@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import PropType from 'prop-types';
 import cn from 'classnames/bind';
-import {withFormik} from "formik";
 
 import styles from './Calculator.module.scss';
-import CalculatorSchema from './Calculator.schema';
 
 
 function Calculator(props){
@@ -77,12 +75,4 @@ function Calculator(props){
     )
 }
 
-const CalculatorWrapper  = withFormik({
-    mapPropsToValues: () =>({}),
-    validationSchema: CalculatorSchema,
-    handleSubmit: (values, {}) => {
-        console.log(values);
-    }
-})(Calculator);
-
-export default CalculatorWrapper;
+export default Calculator;
