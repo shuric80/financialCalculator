@@ -3,6 +3,7 @@
 .Calculator {
     background-color: rgba(73,171,165,0.11);
     font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    width: 80%;
 
     legend {
         color: #49aba5;
@@ -26,8 +27,6 @@
 
     input {
         width: 120px;
-
-
 
         &[type='checkbox']{
             width: 20px;
@@ -74,28 +73,38 @@
 }
 
 .FlexContainer {
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     justify-content: space-around;
-    align-items: stretch;
+
 
 }
 
 .FlexRow {
+    display: -webkit-flex;
     display: flex;
+
     flex-direction: row;
+    -webkit-flex-direction: row;
 }
 
 .FlexColumn {
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
 }
 
 .FlexCell {
-    width: 100%;
+    width: 600px;
     margin: 10px;
+    padding: 0;
+
 
     select {
-        width: 100%;
+        width: 100%
+
     }
 }
