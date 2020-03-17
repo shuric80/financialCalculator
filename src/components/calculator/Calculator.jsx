@@ -10,6 +10,10 @@ function Calculator(props){
   const total  = [100, 300, 500, 1000, 5000, 10000, 50000, 100000];
   const years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const profits = [0, 10, 25, 50, 75, 100];
+  const risk = [
+    {title: 'Low Risk (0.22% per day on avg.).', value:0.22},
+                { title: 'Medium Risk (0.257% per day on avg.).', value: 0.257},
+    {title:'High Risk (0.29% per day on avg.).', value:'0.29'}]
   const [tm, setTm] = useState(new Date().toISOString().split('T')[0]);
   const isMobile = window.innerWidth <= 800;
 
@@ -18,8 +22,7 @@ function Calculator(props){
     <form onSubmit={()=>{console.log('handler')}} className={cn(styles.Calculator)}>
       <fieldset>
         <legend>Profit Calculator</legend>
-        <p>{isMobile ? 'Mobile':'Desktop'}</p>
-        <div className={cn(styles.FlexContainer)}>
+         <div className={cn(styles.FlexContainer)}>
           <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
             <div className={cn(styles.FlexCell)}>
 
@@ -30,11 +33,11 @@ function Calculator(props){
             </div>
             <div className={cn(styles.FlexCell)}>
 
-              <label for="yearsID">Projection years<span className={cn(styles.Required)}>*</span>
+              <label for="riskID">Risk Level<span className={cn(styles.Required)}>*</span>
               </label>
 
               <select name='yearsPay'id="yearsID" className={cn(styles.Select)}>
-                {years.map((value) => (<option value="{value}">{value} years</option>)) }
+                {risk.map((item) => (<option value="{item.value}">{item.title}</option>)) }
               </select>
             </div>
           </div>
