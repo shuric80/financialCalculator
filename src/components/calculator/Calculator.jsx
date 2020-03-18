@@ -32,11 +32,19 @@ function Calculator(props){
     { title: 'Each time the value of profits value a certain package(choose below)', value:2}
   ];
   const amount = [100, 300, 500, 1000, 5000, 10000, 50000, 100000];
+  const header_first_row = [
+    {title:'Initial Investment', value:'$1000'},
+    {title:'Risk Level', value:'High (0.29% per day on avg.)'},
+    {title:'Reinvestment %', value:'100%'},
+    {title:'Reinvestment Term', value:'When balance > $100'},
+    {title:'Projection Years', value:'more 5'}];
+  const header_second_row = [ 'Total Profits', 'Total Reinvestment','Net Profit','ROI', 'Starting Date'];
   const [tm, setTm] = useState(new Date().toISOString().split('T')[0]);
   const isMobile = window.innerWidth <= 800;
 
 
   return (
+    <>
     <form onSubmit={()=>{console.log('handler')}} className={cn(styles.Calculator)}>
       <fieldset>
         <legend>Profit Calculator</legend>
@@ -126,6 +134,18 @@ function Calculator(props){
         </div>
       </fieldset>
     </form>
+      <div id="resultID">
+        <div className={cn(styles.HeaderResult)}><h2>Result</h2>
+          <p>Note: Avg. daily profits are calculated based on 0.29%/Day, based on current investors data</p>
+          <div className={cn(styles.HeaderResultFirstRow, styles.HeaderResultMixin)}>
+            {header_first_row.map((item)=>(<div className={cn(styles.ResultCell)}><h3>{item.title}</h3><p>{item.value}</p></div>))}
+          </div>
+          <div className={cn(styles.HeaderResultSecondRow, styles.HeaderResultMixin)}>
+            {header_second_row.map((item)=>(<div className={cn(styles.ResultCell)}><h3>{item}</h3><p></p></div>))}
+    </div>
+        </div>
+    </div>
+    </>
   )
 }
 
