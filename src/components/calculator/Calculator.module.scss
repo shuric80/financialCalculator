@@ -27,6 +27,7 @@
         background-color: #fff;
         border: 1px solid #bbb;
         color: #4e4e4e;
+        width: 80%;
     }
 
     input {
@@ -105,12 +106,6 @@
     width: 700px;
     margin: 10px;
     padding: 0;
-
-
-    & > select {
-        width: 100%
-
-    }
 }
 
 .HeaderResult {
@@ -143,7 +138,7 @@
     position: relative;
     text-align: left;
 
-    & > h3 {
+    &  h3 {
         font-size: 18px;
         color: #05297a !important;
         font-weight: bold;

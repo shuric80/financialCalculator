@@ -44,96 +44,96 @@ function Calculator(props){
 
 
   return (
-    <>
-    <form onSubmit={()=>{console.log('handler')}} className={cn(styles.Calculator)}>
-      <fieldset>
-        <legend>Profit Calculator</legend>
-        <div className={cn(styles.FlexContainer)}>
-          <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
-            <div className={cn(styles.FlexCell)}>
+    <div className={cn(styles.Calculator)}>
+      <form onSubmit={()=>{console.log('handler')}}>
+        <fieldset>
+          <legend>Profit Calculator</legend>
+          <div className={cn(styles.FlexContainer)}>
+            <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
+              <div className={cn(styles.FlexCell)}>
 
-              <label for='totalPayID'>Initial Investment<span className={cn(styles.Required)}>*</span></label>
-              <select name="totalPay" id="totalPayID">
-                { total.map((value) => (<option value={value}>$ {value}</option>))}
-              </select>
-            </div>
-            <div className={cn(styles.FlexCell)}>
-              <label for="riskFieldID">Risk Level<span className={cn(styles.Required)}>*</span>
-              </label>
-              <select name='riskField'id="riskFieldID">
-                {risk.map((item) => (<option value={item.value}>{item.title}</option>)) }
-              </select>
-            </div>
-          </div>
-          <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
-            <div className={cn(styles.FlexCell)}>
-
-              <label for="profitIdPay">What % of your profits would you like to reinvest?<span className={cn(styles.Required)}>*</span>
-              </label>
-
-              <select id='profitIdPay'>
-                {profits.map((value) => (<option value={value}>{value}%</option>)) }
-              </select>
+                <label for='totalPayID'>Initial Investment<span className={cn(styles.Required)}>*</span></label>
+                <select name="totalPay" id="totalPayID">
+                  { total.map((value) => (<option value={value}>$ {value}</option>))}
+                </select>
+              </div>
+              <div className={cn(styles.FlexCell)}>
+                <label for="riskFieldID">Risk Level<span className={cn(styles.Required)}>*</span>
+                </label>
+                <select name='riskField'id="riskFieldID">
+                  {risk.map((item) => (<option value={item.value}>{item.title}</option>)) }
+                </select>
+              </div>
             </div>
             <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
               <div className={cn(styles.FlexCell)}>
-                <label for="reinvestFieldID">How often would you like to reinvest?<span className={cn(styles.Required)}>*</span></label>
-                <select id="reinvestFieldID" onChange={(event)=>{setShow(event.target.value==2)}}>
-                  {reinvest.map((item)=>(<option value={item.value}>{item.title}</option>))}
+
+                <label for="profitIdPay">What % of your profits would you like to reinvest?<span className={cn(styles.Required)}>*</span>
+                </label>
+
+                <select id='profitIdPay'>
+                  {profits.map((value) => (<option value={value}>{value}%</option>)) }
                 </select>
               </div>
+              <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
+                <div className={cn(styles.FlexCell)}>
+                  <label for="reinvestFieldID">How often would you like to reinvest?<span className={cn(styles.Required)}>*</span></label>
+                  <select id="reinvestFieldID" onChange={(event)=>{setShow(event.target.value==2)}}>
+                    {reinvest.map((item)=>(<option value={item.value}>{item.title}</option>))}
+                  </select>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
-            {isShow &&
-             <div className={cn(styles.FlexCell)}>
+            <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
+              {isShow &&
+               <div className={cn(styles.FlexCell)}>
 
-               <label for="amounFieldID">If my balance reaches this amount, reinvest with this package<span className={cn(styles.Required)}>*</span>
-               </label>
-               <select id="amounFieldID">
-                 {amount.map((item)=>(<option value="{item}">${item}</option>))}
-               </select>
-             </div>
-            }
+                 <label for="amounFieldID">If my balance reaches this amount, reinvest with this package<span className={cn(styles.Required)}>*</span>
+                 </label>
+                 <select id="amounFieldID">
+                   {amount.map((item)=>(<option value="{item}">${item}</option>))}
+                 </select>
+               </div>
+              }
 
-            <div className={cn(isMobile ? styles.FlexRow: styles.Column)}>
+              <div className={cn(isMobile ? styles.FlexRow: styles.Column)}>
+                <div className={cn(styles.FlexCell)}>
+                  <label for="protectionFieldID">Projection years<span className={cn(styles.Required)}>*</span></label>
+                  <select id="protectionFieldID">
+                    {years.map((item)=>(<option value={item.value}>{item.title}</option>))}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className={cn(styles.FlexRow)}>
+
               <div className={cn(styles.FlexCell)}>
-                <label for="protectionFieldID">Projection years<span className={cn(styles.Required)}>*</span></label>
-                <select id="protectionFieldID">
-                  {years.map((item)=>(<option value={item.value}>{item.title}</option>))}
-                </select>
+                <label for="periodIdPay">Starting Date<span className={cn(styles.Required)}>*</span>
+                </label>
+                <div className={cn(styles.FlexRow)}>
+                  <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
+                  <div className={cn(styles.CalendarIcon)}></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={cn(styles.FlexRow)}>
 
-            <div className={cn(styles.FlexCell)}>
-              <label for="periodIdPay">Starting Date<span className={cn(styles.Required)}>*</span>
-              </label>
-              <div className={cn(styles.FlexRow)}>
-                <input value={tm} name='beginDate' type='date' onChange={(e)=>{setTm(e.target.value)}} id='beginDateId' />
-                <div className={cn(styles.CalendarIcon)}></div>
+            <div className={cn(isMobile? styles.FlexColumn: styles.FlexRow)}>
+              <div className={cn(styles.FlexCell)}>
+                <label>Consent<span className={cn(styles.Required)}>*</span>
+                </label>
+
+                <input type='checkbox' id='okId'/>
+                <span>I understand that this calculator is for demostration purpose only and does not guarantee any results.</span>
+
               </div>
             </div>
+            <p>
+              <button className={cn(styles.Button)} type='submit'><span className={cn(styles.Icon)}>&#x2B95;</span>calculate profit</button>
+            </p>
           </div>
-
-          <div className={cn(isMobile? styles.FlexColumn: styles.FlexRow)}>
-            <div className={cn(styles.FlexCell)}>
-              <label>Consent<span className={cn(styles.Required)}>*</span>
-              </label>
-
-              <input type='checkbox' id='okId'/>
-              <span>I understand that this calculator is for demostration purpose only and does not guarantee any results.</span>
-
-            </div>
-          </div>
-          <p>
-            <button className={cn(styles.Button)} type='submit'><span className={cn(styles.Icon)}>&#x2B95;</span>calculate profit</button>
-          </p>
-        </div>
-      </fieldset>
-    </form>
+        </fieldset>
+      </form>
       <div id="resultID">
         <div className={cn(styles.HeaderResult)}><h2>Result</h2>
           <p>Note: Avg. daily profits are calculated based on 0.29%/Day, based on current investors data</p>
@@ -142,10 +142,10 @@ function Calculator(props){
           </div>
           <div className={cn(styles.HeaderResultSecondRow, styles.HeaderResultMixin)}>
             {header_second_row.map((item)=>(<div className={cn(styles.ResultCell)}><h3>{item}</h3><p></p></div>))}
-    </div>
+          </div>
         </div>
+      </div>
     </div>
-    </>
   )
 }
 
