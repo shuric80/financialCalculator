@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robokassa/robomarket-components"
+    "url": "https://github.com/shuric80/components"
   },
   "main": "src/index.js",
   "files": [
@@ -84,7 +84,7 @@
     "node-sass": "^4.13.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "latest",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.0",
     "react-test-renderer": "^16.12.0",
     "require-context.macro": "^1.2.2",
     "stylelint": "^12.0.0",
