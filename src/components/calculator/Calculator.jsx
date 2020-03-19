@@ -5,8 +5,7 @@ import cn from 'classnames/bind';
 import styles from './Calculator.module.scss';
 
 
-function Calculator(props){
-  const {errors, touched} = props;
+function Calculator(){
   const [isShow, setShow] = useState(false);
   const arr_initialInvestman  = [100, 300, 500, 1000, 5000, 10000, 50000, 100000];
 
