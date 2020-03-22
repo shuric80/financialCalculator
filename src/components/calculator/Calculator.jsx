@@ -10,15 +10,15 @@ import {Checkbox} from "./Checkbox";
 
 function Calculator(){
     const [isShow, setShow] = useState(false);
+    const [isHideQuestions, setHideQuestion] = useState(true);
 
     const Initials = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000'];
-
     const [initial, setInitial ] = useState(Initials[0]);
 
     const Years = ['1 Year', '2 Years', '3 Years', '4 Years', '5 Years', '6 Years', '7 Years', '8 Years', '9 Years', '10 Years'];
     const [year, setYear] = useState(0);
 
-    const Profits = ['0%', '10', '25%', '50%', '75%', '100%'];
+    const Profits = ['0%', '10%', '25%', '50%', '75%', '100%'];
     const [profit, setProfit] = useState(0);
 
     const [beginDate, setBeginDate] = useState(new Date().toISOString().split('T')[0]);
@@ -52,12 +52,17 @@ function Calculator(){
             </div>
 
             <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
-              <Input handler={(event)=>{console.log(event)}} values={Profits} title='What % of your profits would you like to reinvest?' />
-              <Input handler={(event)=>(console.log(event))} values={Years} title="Projection years" />
+              <Input handler={(event)=>{setHideQuestion(event.target.value == 0 ) }} values={Profits} title='What % of your profits would you like to reinvest?' />
+              { isHideQuestions ?
+               <Input handler={(event)=>{}} values={Years} title="Projection years" />:
+               <Input handler={(event)=>{}} values={Questions} title='How often would you like to reinvest?' /> }
             </div>
 
-            <div>
+            <div className={cn(isMobile ? styles.FlexColumn: styles.FlexRow)}>
+              {isHideQuestions || <Input handler={(event)=>{}} values={Years} title="Projection years" />}
               <Calendar beginDate={beginDate} handler={(event)=>{setBeginDate(event.target.value)}} />
+            </div>
+            <div>
               <Checkbox />
             </div>
             <div>
