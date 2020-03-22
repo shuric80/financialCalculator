@@ -9,9 +9,9 @@ import {Checkbox} from "./Checkbox";
 
 
 function Calculator(){
-    const [isShow, setShow] = useState(false);
-    const [isHideQuestions, setHideQuestion] = useState(true);
-    const [isHideReinvestBalance, setHideReinvestBalanse] = useState(true);
+    const [isShowAmount, setShowAmount] = useState(false);
+    const [isShowQuestions, setShowQuestion] = useState(false);
+    const [isShowReinvestBalance, setShowReinvestBalanse] = useState(false);
 
     const Initials = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000', 'Other Initial'];
     const [initial, setInitial ] = useState(Initials[0]);
@@ -35,23 +35,24 @@ function Calculator(){
 
     const Questions = ['First day of each week', 'First of each month', 'Each time the value of profits value a certain package(choose below)'];
 
-    const Amounts = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000'];
-    const [amount, setAmount] = useState(Amounts[0]);
-
-    const [total_profit, setTotalProfit] = useState(0);
-
-
-    const isMobile = window.innerWidth <= 800;
-
+    const Reinvests = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000'];
+    const [reinvest, setReinvest] = useState(Reinvests[0]);
 
     return (
         <div className={cn(styles.Calculator)}>
           <h1>Profit Calculator</h1>
           <div className={cn(styles.Form)}>
-            <Input handler={(event)=>(console.log(event))} values={Initials} title="Initial Investment"  />
+            <Input handler={(event)=>{setShowAmount(event.target.value)}} values={Initials} title="Initial Investment"  />
             <Input handler={(event)=>(console.log(event))} values={Risks} title="Risk Level" />
-            <Input handler={(event)=>{setHideQuestion(event.target.value == 0 ) }} values={Profits} title='What % of your profits would you like to reinvest?' />
-            <Input handler={(event)=>{}} values={Years} title="Projection years" />
+              {isShowAmount && <Input title="What amount would you like to invest (in USD)?" handler={(event)=>{}} /> }
+            <Input handler={(event)=>{setShowQuestion(event.target.value != 0 ) }} values={Profits} title='What % of your profits would you like to reinvest?' />
+              {isShowQuestions &&
+              <Input handler={(event)=>{setShowReinvestBalanse(event.target.value==2)}} values={Questions} title="How often would you like to reinvest?" />
+              }
+              { isShowReinvestBalance && isShowQuestions &&
+               <Input handler={(event)=>{}} values={Reinvests} title='If my balance reaches this amount, reinvest with this package' />
+               }
+             <Input handler={(event)=>{}} values={Years} title="Projection years" />
             <Calendar beginDate={beginDate} handler={(event)=>setBeginDate(event.target.value)} />
           </div>
             <Checkbox />

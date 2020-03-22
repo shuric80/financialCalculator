@@ -14,16 +14,16 @@ function Input(props) {
         {title}
         {isRequired && <span className={cn(styles.Required)}>*</span> }
       </span>
-      <select onChange={handler}>
-        { values.map((item, index) => (<option value={index}>{item}</option>))}
-      </select>
+        { values ? <select onChange={handler}>{ values.map((item, index) => (<option value={index}>{item}</option>))}}
+           </select> :<input onChange={handler}/>
+        }
     </div>
   );
 }
 
 Input.propTypes = {
   title: PropType.string.isRequired,
-  values: PropType.arrayOf(PropType.string).isRequired,
+  values: PropType.arrayOf(PropType.string),
   handler: PropType.func.isRequired,
   isRequired: PropType.bool,
 };
