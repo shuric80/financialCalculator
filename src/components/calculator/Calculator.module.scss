@@ -13,26 +13,14 @@
         color: #49aba5;
         font-size: 30px;
     }
-
-
-    & select, input {
-        padding: 2px 12px 2px 2px;
-        background-color: #fff;
-        border: 1px solid #bbb;
-        color: #4e4e4e;
-        width: 80%;
-    }
-
-    input {
-        width: 120px;
-
-        &[type='checkbox']{
-            width: 20px;
-            margin-right: 10px;
-        }
-    }
 }
 
+.Form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
 
 .Button {
     height: 46px;
