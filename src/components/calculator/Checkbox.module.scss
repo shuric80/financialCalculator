@@ -1,0 +1,24 @@
+.Title {
+    display: block;
+    color: #303030;
+    font-weight: 700;
+    font-size: inherit;
+    margin-bottom: 10px;
+}
+
+.Checkbox {
+    margin: 10px;
+  & input {
+    width: 120px;
+
+    &[type='checkbox'] {
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.Required {
+  color: #790000;
+  margin-left: 4px;
+};

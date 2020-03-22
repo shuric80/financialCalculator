@@ -12,7 +12,7 @@ function Input(props) {
     <div className={cn(styles.Input)}>
       <span className={cn(styles.Title)}>
         {title}
-        {isRequired && <span className={cn(styles.RequiredElement)}>*</span> }
+        {isRequired && <span className={cn(styles.Required)}>*</span> }
       </span>
       <select onChange={handler}>
         { values.map((item, index) => (<option value={index}>{item}</option>))}
@@ -29,7 +29,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  isRequired: false,
+  isRequired: true,
 };
 
 export default Input;
