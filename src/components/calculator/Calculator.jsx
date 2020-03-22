@@ -52,10 +52,9 @@ function Calculator(){
             <Input handler={(event)=>(console.log(event))} values={Risks} title="Risk Level" />
             <Input handler={(event)=>{setHideQuestion(event.target.value == 0 ) }} values={Profits} title='What % of your profits would you like to reinvest?' />
             <Input handler={(event)=>{}} values={Years} title="Projection years" />
-            {isHideReinvestBalance || <Input handler={(event)=>{}} values={Amounts} title='If my balance reaches this amount, reinvest with this package'/>}
-            <Input handler={(event)=>{}} values={Years} title="Projection years" />
-            <Checkbox />
+            <Calendar beginDate={beginDate} handler={(event)=>setBeginDate(event.target.value)} />
           </div>
+            <Checkbox />
           <div>
             <button className={cn(styles.Button)} type='submit'><span className={cn(styles.Icon)}>&#x2B95;</span>calculate profit</button>
           </div>
