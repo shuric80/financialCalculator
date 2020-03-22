@@ -24,7 +24,7 @@ function Calculator(){
   const [riskLevel, setRiskLevel] = useState(0);
 
   const sarr_Reinvest = ['First day of each week', 'First of each month', 'Each time the value of profits value a certain package(choose below)'];
-  const [sreinvest, ssetReinvest] = useState(0);
+  const [sreinvest, setReinvest] = useState(0);
 
   const arr_reinvestment_term = [100, 300, 500, 1000, 5000, 10000, 50000, 100000];
   const [reinvestment_term, setReinvestmentTerm] = useState(arr_reinvestment_term[0]);
