@@ -1,0 +1,60 @@
+.HeaderResult {
+  text-align: center;
+  background-color: rgba(255,200,57,0.12);
+  padding: 54px 0;
+  h2 {
+    font-weight: bold;
+    color: #49aba5;
+  }
+  & > p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27.2px;
+  }
+
+}
+
+.HeaderResultMixin {
+  padding-top: 20px !important;
+  padding-right: 20px !important;
+  padding-bottom: 20px !important;
+  padding-left: 20px !important;
+  display: flex;
+  direction: ltr;
+  max-width: 100%;
+  width: 95%;
+  background-color: rgba(255,200,57,0.48);
+  text-align: center;
+  position: relative;
+  text-align: left;
+
+  &  h3 {
+    font-size: 18px;
+    color: #05297a !important;
+    font-weight: bold;
+    font-style: normal;
+    text-transform: none;
+    text-decoration: none;
+  }
+
+}
+
+
+
+.HeaderResultFirstRow {
+
+  background-color: rgba(255,200,57,0.48);
+}
+
+.HeaderResultSecondRow {
+  background-color: rgba(255,255,255,0.48);
+}
+
+
+
+.ResultCell {
+  order:1;
+  -webkit-box-ordinal-group:2;
+  width: 17.6%;
+  margin-right: 3%;
+}
