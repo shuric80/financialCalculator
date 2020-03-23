@@ -59,7 +59,10 @@ function Calculator() {
       </div>
       <Checkbox />
       <div>
-        <button className={cn(styles.Button)} onClick={()=> setResults(CalculateMoney(1000, new Date(), 1, 0.003, 100))}>
+        <button className={cn(styles.Button)} onClick={()=> setResults(
+          CalculateMoney(
+            initial, beginDate, year, 0.003, reinvest,
+          ))}>
           <span className={cn(styles.Icon)}>&#x2B95;</span>
           calculate profit
         </button>

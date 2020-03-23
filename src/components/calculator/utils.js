@@ -1,26 +1,36 @@
 import {withBackgrounds} from "@storybook/addon-backgrounds";
+import {func} from "prop-types";
 
-export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
+//export function parseTo(initial, beginDate, years, gain, reinvest){
+//  return
+//    initial.replace('$', ''),
+ //   new Date(beginDate),
+ //   parseInt(years.split(' ')[0]),
+ //   reinvest.replace('$', '');
+//}
+
 export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
+  const tm = new Date(beginDate);
   const finishDate = new Date(
-    beginDate.getFullYear() + 1, beginDate.getMonth(), beginDate.getDate(),
+    tm.getFullYear() + parseInt(years.split(' ')[0]), tm.getMonth(), tm.getDate(),
   );
 
   const results = [];
-  let investment = initial;
-  let totalInvestment = initial;
+  let investment = +initial.replace('$','');
+  let totalInvestment = +initial.replace('$','');
   let balance = 0;
-  let title = `${Months[beginDate.getMonth()-1]} ${ beginDate.getFullYear()}`;
+  let title = `${Months[tm.getMonth()-1]} ${ tm.getFullYear()}`;
   let calendar = [];
 
 
-  for (let item = beginDate.getTime(); item <= finishDate.getTime(); item += 86400000) {
+  for (let item = tm.getTime(); item <= finishDate.getTime(); item += 86400000) {
     const currentDate = new Date(item);
 
-    if(currentDate.getDate() == 1){
+    if(currentDate.getDate() === 1){
         title = `${Months[currentDate.getMonth()-1]} ${ currentDate.getFullYear()}`;
         results.push({ title, month: calendar });
         calendar = [];
