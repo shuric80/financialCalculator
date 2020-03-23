@@ -13,7 +13,7 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
   let investment = initial;
   let totalInvestment = initial;
   let balance = 0;
-  let title = `${Months[beginDate.getMonth()]} ${ beginDate.getFullYear()}`;
+  let title = `${Months[beginDate.getMonth()-1]} ${ beginDate.getFullYear()}`;
   let calendar = [];
 
 
@@ -21,7 +21,7 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
     const currentDate = new Date(item);
 
     if(currentDate.getDate() == 1){
-        title = `${Months[currentDate.getMonth()]} ${ currentDate.getFullYear()}`;
+        title = `${Months[currentDate.getMonth()-1]} ${ currentDate.getFullYear()}`;
         results.push({ title, month: calendar });
         calendar = [];
     }

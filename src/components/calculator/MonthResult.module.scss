@@ -1,12 +1,18 @@
 .MonthResult {
   margin-bottom: 1.5%;
-  width: 100%;
+  width: 90%;
   background-color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 0 0 0 20px;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.1);
+  }
 
   & h5 {
-    padding: 0 50px 0 0;
     font-size: 16px;
+    height: 16px;
   }
 
   td {
@@ -18,7 +24,7 @@
     border: 1px solid #eee;
     margin: 0 0 15px;
     text-align: left;
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     border-spacing: 0;
   }
@@ -26,4 +32,22 @@
 .Content {
   padding-top: 20px;
   position: relative;
+}
+
+.Title {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  width: 100%;
+
+   & div {
+     background-color: rgba(200, 200,200, 0.6);
+     color: rgba(250, 250, 250, 1);
+     text-align: center;
+     margin: 20px 10px 15px auto;
+     font-size: 32px;
+     border-radius: 20px;
+     max-height: 30px;
+     width: 30px;
+   }
 }

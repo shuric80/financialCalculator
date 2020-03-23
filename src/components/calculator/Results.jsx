@@ -2,13 +2,12 @@ import PropType from 'prop-types';
 import React from "react";
 import styles from './Results.module.scss'
 import cn from 'classnames/bind';
-import {MonthResults} from "./MonthResult";
+import MonthResults from "./MonthResult";
 
 function Results(props) {
 
    const {values, headers} = props;
     return (
-
         <div className={cn(styles.Results)}>
                 <div className={cn(styles.HeaderResult)}><h2>Result</h2>
                     <p>Note: Avg. daily profits are calculated based on 0.29%/Day, based on current investors data</p>
@@ -27,7 +26,7 @@ function Results(props) {
                         <div className={cn(styles.ResultCell)}><h3>Starting Date</h3><p>{headers[9]}</p></div>
                     </div>
                 </div>
-            {values.map((months)=>(<MonthResults values={months.month} date={months.date} />))}
+            {values.map((months, index)=>(<MonthResults values={months.month} date={months.title} key={index}/>))}
         </div>
 
     )

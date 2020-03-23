@@ -64,7 +64,7 @@ function Calculator() {
           calculate profit
         </button>
       </div>
-      <Results headers={[initial, risk, profit, reinvest, year]} values={results}/>
+      <Results headers={[initial, risk, profit, reinvest, year]} values={results} />
     </div>
   );
 }
