@@ -27,9 +27,9 @@ function Results(props) {
                         <div className={cn(styles.ResultCell)}><h3>Starting Date</h3><p>{headers[9]}</p></div>
                     </div>
                 </div>
-            <MonthResults values={values}/>
+            {values.map((months)=>(<MonthResults values={months.month} date={months.date} />))}
+        </div>
 
-            </div>
     )
 }
 

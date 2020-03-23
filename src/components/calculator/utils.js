@@ -1,3 +1,7 @@
+export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+export const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
   const finishDate = new Date(
     beginDate.getFullYear() + 1, beginDate.getMonth(), beginDate.getDate(),
@@ -7,14 +11,23 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
   let investment = initial;
   let totalInvestment = initial;
   let balance = 0;
+  let title = `${Months[beginDate.getMonth()]} ${ beginDate.getFullYear()}`;
+  let calendar = [];
 
 
   for (let item = beginDate.getTime(); item <= finishDate.getTime(); item += 86400000) {
     const currentDate = new Date(item);
+
+    if(currentDate.getDate() == 1){
+        title = `${Months[currentDate.getMonth()]} ${ currentDate.getFullYear()}`;
+        results.push({ title, month: calendar });
+        calendar = [];
+    }
+
     investment = '';
 
     if (currentDate.getDay() === 5 || currentDate.getDay() === 6) {
-      results.push({
+      calendar.push({
         date: currentDate,
         investment: investment,
         profit: 'No traiding',
@@ -32,7 +45,7 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
         investment = `$${reinvenst}`;
       }
 
-      results.push({
+      calendar.push({
         date: currentDate,
         investment,
         profit: `$${profit}`,
@@ -41,5 +54,6 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
       });
     }
   }
+
   return results;
 }
