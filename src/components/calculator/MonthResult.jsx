@@ -5,14 +5,15 @@ import {PropTypes} from "prop-types";
 
 const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-export function MonthResults() {
-    const date = new Date();
-    const daysInMonth = 33 - new Date(date.getFullYear(), date.getMonth(), 33).getDate();
-    const calendar = [];
+export function MonthResults(props) {
+    const { values } = props;
+    // const date =  new Date();
+    // const daysInMonth = 33 - new Date(date.getFullYear(), date.getMonth(), 33).getDate();
+    // const calendar = [];
 
-    for (let i = 0; i <= daysInMonth; ++i){
-        calendar.push(new Date(date.getFullYear(), date.getMonth(), i));
-    };
+    // for (let i = 0; i <= daysInMonth; ++i){
+    //     calendar.push(new Date(date.getFullYear(), date.getMonth(), i));
+    // };
     return (
         <div className={cn(styles.MonthResult)}>
             <h5>Feb 2002</h5>
@@ -28,11 +29,13 @@ export function MonthResults() {
                     <td>Contract Finish Date</td>
                 </tr>
                 {
-                    calendar.map((date)=>(<tr>
-                        <td>{Months[date.getMonth()]}&ensp;{date.getDate()}&ensp;{date.getFullYear()}</td>
-                        <td>{Days[date.getDay()]}</td>
-                        <td></td>
-                        <td>{(date.getDay()==6||date.getDay()==5)&& 'No Trading'}</td>
+                    values.map((item)=>(<tr>
+                        <td>{Months[item.date.getMonth()]}&ensp;{item.date.getDate()}&ensp;{item.date.getFullYear()}</td>
+                        <td>{Days[item.date.getDay()]}</td>
+                        <td>{item.investment}</td>
+                        <td>{item.profit}</td>
+                        <td>{item.balance}</td>
+                        <td>{item.totalInvestment}</td>
                     </tr>))
                 }
                 </tbody>

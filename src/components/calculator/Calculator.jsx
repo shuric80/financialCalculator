@@ -6,6 +6,7 @@ import Input from './Input';
 import Calendar from './Calendar';
 import { Checkbox } from './Checkbox';
 import Results from './Results';
+import {CalculateMoney} from "./utils";
 
 
 function Calculator() {
@@ -39,39 +40,35 @@ function Calculator() {
   const Reinvests = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000'];
   const [reinvest, setReinvest] = useState(Reinvests[0]);
 
+  const [results, setResults] = useState([]);
+
   return (
     <div className={cn(styles.Calculator)}>
       <h1>Profit Calculator</h1>
       <div className={cn(styles.Form)}>
-        <Input handler={(event) => { setShowAmount(event.target.value == 8); setInitial(Initials[event.target.value])}} values={Initials} title="Initial Investment" />
-        <Input handler={(event) => {setRisk(Risks[event.target.value])}} values={Risks} title="Risk Level" />
+        <Input handler={(event) => { setShowAmount(event.target.value == 8); setInitial(Initials[event.target.value]); }} values={Initials} title="Initial Investment" />
+        <Input handler={(event) => { setRisk(Risks[event.target.value]); }} values={Risks} title="Risk Level" />
         {isShowAmount && <Input title="What amount would you like to invest (in USD)?" handler={(event) => {}} /> }
-        <Input handler={(event) => { setShowQuestion(event.target.value != 0); setProfit(Profits[event.target.value])}} values={Profits} title="What % of your profits would you like to reinvest?" />
+        <Input handler={(event) => { setShowQuestion(event.target.value != 0); setProfit(Profits[event.target.value]); }} values={Profits} title="What % of your profits would you like to reinvest?" />
         {isShowQuestions
-              && <Input handler={(event) => { setShowReinvestBalanse(event.target.value == 2) }} values={Questions} title="How often would you like to reinvest?" />}
+              && <Input handler={(event) => { setShowReinvestBalanse(event.target.value == 2); }} values={Questions} title="How often would you like to reinvest?" />}
         { isShowReinvestBalance && isShowQuestions
                && <Input handler={(event) => {}} values={Reinvests} title="If my balance reaches this amount, reinvest with this package" />}
-        <Input handler={(event) => {setYear(Years[event.target.value])}} values={Years} title="Projection years" />
+        <Input handler={(event) => { setYear(Years[event.target.value]); }} values={Years} title="Projection years" />
         <Calendar beginDate={beginDate} handler={(event) => setBeginDate(event.target.value)} />
       </div>
       <Checkbox />
       <div>
-        <button className={cn(styles.Button)} type="submit">
+        <button className={cn(styles.Button)} onClick={()=> setResults(CalculateMoney(1000, new Date(), 1, 0.003, 100))}>
           <span className={cn(styles.Icon)}>&#x2B95;</span>
           calculate profit
         </button>
       </div>
-        <Results values={[initial, risk, profit, reinvest, year]} />
+      <Results headers={[initial, risk, profit, reinvest, year]} values={results}/>
     </div>
-
   );
 }
 
 export default Calculator;
 
 
-function Calculate(initial, beginDate, years, risk, reinvenst) {
-  
-
-
-}
