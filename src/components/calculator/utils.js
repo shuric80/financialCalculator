@@ -1,3 +1,5 @@
+import {withBackgrounds} from "@storybook/addon-backgrounds";
+
 export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -29,10 +31,10 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
     if (currentDate.getDay() === 5 || currentDate.getDay() === 6) {
       calendar.push({
         date: currentDate,
-        investment: investment,
+        investment,
         profit: 'No traiding',
-        balance: `$${ balance}`,
-          totalInvestment
+        balance: `$${ balance.toFixed(2)}`,
+        totalInvestment: totalInvestment.toFixed(2)
       });
     } else {
 
@@ -48,9 +50,9 @@ export function CalculateMoney(initial, beginDate, years, gain, reinvenst) {
       calendar.push({
         date: currentDate,
         investment,
-        profit: `$${profit}`,
-        balance: `$${balance}`,
-        totalInvestment
+        profit: `$${profit.toFixed(2)}`,
+        balance: `$${balance.toFixed(2)}`,
+        totalInvestment: totalInvestment.toFixed(2)
       });
     }
   }
