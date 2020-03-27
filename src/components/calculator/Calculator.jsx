@@ -61,7 +61,7 @@ function Calculator() {
       <div>
         <button className={cn(styles.Button)} onClick={()=> setResults(
           CalculateMoney(
-            initial, beginDate, year, 0.003, reinvest,
+            initial, beginDate, year, risk, reinvest,
           ))}>
           <span className={cn(styles.Icon)}>&#x2B95;</span>
           calculate profit
@@ -73,5 +73,3 @@ function Calculator() {
 }
 
 export default Calculator;
-
-
