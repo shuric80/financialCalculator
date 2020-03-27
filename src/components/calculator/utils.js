@@ -18,6 +18,7 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
     const finishDate = new Date(
         tm.getFullYear() + parseInt(years.split(' ')[0]), tm.getMonth(), tm.getDate(),
     );
+    console.log(finishDate, beginDate, years);
 
     const results = [];
     let investment = +initial.replace('$','');
@@ -38,11 +39,12 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
         gain = 0.029;
     } else {}
 
+    const daily = 1000 * 60 * 60 * 24;
 
-    for (let item = tm.getTime(); item <= finishDate.getTime(); item += 86400000) {
+
+    for (let item = tm.getTime(); item <= finishDate.getTime(); item += daily) {
         const currentDate = new Date(item);
         const last_day_of_month = new Date( currentDate.getFullYear(), currentDate.getMonth()+1, 0);
-        console.log(last_day_of_month.getDate(), currentDate.getDate());
 
         investment = '';
 
@@ -74,14 +76,11 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
             });
         }
 
-        if(currentDate.getDate() === last_day_of_month.getDate()){
+        if(currentDate.getDate() === last_day_of_month.getDate() || currentDate.getTime() > finishDate.getTime()-daily){
             title = `${Months[currentDate.getMonth()]} ${ currentDate.getFullYear()}`;
-            console.log(title);
             results.push({ title, month: calendar });
             calendar = [];
         }
-
-
           }
 
         return results;
