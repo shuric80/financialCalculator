@@ -48,7 +48,7 @@ function Calculator() {
       <div className={cn(styles.Form)}>
         <Input handler={(event) => { setShowAmount(event.target.value == 8); setInitial(Initials[event.target.value]); }} values={Initials} title="Initial Investment" />
         <Input handler={(event) => { setRisk(Risks[event.target.value]); }} values={Risks} title="Risk Level" />
-        {isShowAmount && <Input title="What amount would you like to invest (in USD)?" handler={(event) => {}} /> }
+        {isShowAmount && <Input title="What amount would you like to invest (in USD)?" handler={(event) => {setInitial('$'+event.target.value)}} /> }
         <Input handler={(event) => { setShowQuestion(event.target.value != 0); setProfit(Profits[event.target.value]); }} values={Profits} title="What % of your profits would you like to reinvest?" />
         {isShowQuestions
               && <Input handler={(event) => { setShowReinvestBalanse(event.target.value == 2); }} values={Questions} title="How often would you like to reinvest?" />}

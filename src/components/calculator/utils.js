@@ -5,13 +5,6 @@ export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
 
 export const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-//export function parseTo(initial, beginDate, years, gain, reinvest){
-//  return
-//    initial.replace('$', ''),
-//   new Date(beginDate),
-//   parseInt(years.split(' ')[0]),
-//   reinvest.replace('$', '');
-//}
 
 export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
     const tm = new Date(beginDate);
