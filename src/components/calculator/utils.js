@@ -11,9 +11,9 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
     const finishDate = new Date(
         tm.getFullYear() + parseInt(years.split(' ')[0]), tm.getMonth(), tm.getDate(),
     );
-    console.log(finishDate, beginDate, years);
 
-    const results = [];
+
+    const results = {timeline:[], total: {}};
     let investment = +initial.replace('$','');
     let totalInvestment = +initial.replace('$','');
     let balance = 0;
@@ -40,7 +40,6 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
         const last_day_of_month = new Date( currentDate.getFullYear(), currentDate.getMonth()+1, 0);
 
         investment = '';
-
 
 
         if (currentDate.getDay() === 5 || currentDate.getDay() === 6) {
@@ -75,10 +74,17 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
 
         if(currentDate.getDate() === last_day_of_month.getDate() || currentDate.getTime() > finishDate.getTime()-daily){
             title = `${Months[currentDate.getMonth()]} ${ currentDate.getFullYear()}`;
-            results.push({ title, month: calendar });
+            results.timeline.push({ title, month: calendar });
             calendar = [];
         }
-          }
+    }
+
+    results.total =  {
+        profit: '$' + balance.toFixed(0),
+        reinvenst: 0,
+        net:  0 ,
+        roi: 0
+    }
 
     return results
     }

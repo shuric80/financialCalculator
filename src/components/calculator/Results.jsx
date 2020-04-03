@@ -13,7 +13,7 @@ function showRisk(risk)   {
 
 function Results(props) {
 
-    const {values, headers} = props;
+    const {values, headers, beginDate} = props;
     const risk = showRisk(headers[1]);
     return (
         <div className={cn(styles.Results)}>
@@ -27,14 +27,14 @@ function Results(props) {
               <div className={cn(styles.ResultCell)}><h3>Projection Years</h3><p>{headers[4]}</p></div>
             </div>
             <div className={cn(styles.HeaderResultSecondRow, styles.HeaderResultMixin)}>
-              <div className={cn(styles.ResultCell)}><h3>Total Profits</h3><p>{headers[5]}</p></div>
-              <div className={cn(styles.ResultCell)}><h3>Total Reinvestment</h3><p>{headers[6]}</p></div>
-              <div className={cn(styles.ResultCell)}><h3>Net Profit</h3><p>{headers[7]}</p></div>
-              <div className={cn(styles.ResultCell)}><h3>ROI</h3><p>{headers[8]}</p></div>
-              <div className={cn(styles.ResultCell)}><h3>Starting Date</h3><p>{headers[9]}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>Total Profits</h3><p>{values.total.profit}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>Total Reinvestment</h3><p>{values.total}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>Net Profit</h3><p>{values.total.net}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>ROI</h3><p>{values.total.roi}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>Starting Date</h3><p>{beginDate}</p></div>
             </div>
           </div>
-          {values.map((months, index)=>(<MonthResults values={months.month} date={months.title} key={index}/>))}
+          {values.timeline.map((item, index)=>(<MonthResults values={item.month} date={item.title} key={index}/>))}
         </div>
 
     )

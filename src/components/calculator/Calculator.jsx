@@ -41,7 +41,7 @@ function Calculator() {
     const Reinvests = ['$100', '$300', '$500', '$1000', '$5000', '$10000', '$50000', '$100000'];
     const [reinvest, setReinvest] = useState(Reinvests[0]);
 
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState({timeline:[], total:{}});
 
     return (
         <div className={cn(styles.Calculator)}>
@@ -68,7 +68,7 @@ function Calculator() {
               calculate profit
             </button>
           </div>
-          <Results headers={[initial, risk, profit, reinvest, year]} values={results}  />
+          <Results headers={[initial, risk, profit, reinvest, year]} values={results} beginDate={beginDate} />
         </div>
     );
 }
