@@ -6,7 +6,7 @@ import { Months, Days } from './utils';
 
 
 function MonthResults(props) {
-  const { values, date } = props;
+    const { values, date } = props;
 
   const [isShowDetail, setShow ] = useState(false);
 
@@ -28,7 +28,9 @@ function MonthResults(props) {
                 <td>Contract Finish Date</td>
               </tr>
               {
-                    values.map((item) => (
+
+
+                  values.map((item, index) => (
                       <tr>
                         <td>
                           {Months[item.date.getMonth()]}
@@ -42,6 +44,7 @@ function MonthResults(props) {
                         <td>{item.profit}</td>
                         <td>{item.balance}</td>
                         <td>{item.totalInvestment}</td>
+                        { index === 0 && <td>{item.finishDate.getMonth()}-{item.finishDate.getDate()}-{item.finishDate.getFullYear()}</td>}
                       </tr>
                     ))
                 }

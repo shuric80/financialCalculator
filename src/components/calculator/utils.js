@@ -41,9 +41,12 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
 
         investment = '';
 
+
+
         if (currentDate.getDay() === 5 || currentDate.getDay() === 6) {
             calendar.push({
                 date: currentDate,
+                finishDate,
                 investment,
                 profit: 'No traiding',
                 balance: `$${ balance.toFixed(2)}`,
@@ -62,6 +65,7 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
 
             calendar.push({
                 date: currentDate,
+                finishDate,
                 investment,
                 profit: `$${profit.toFixed(2)}`,
                 balance: `$${balance.toFixed(2)}`,
@@ -76,5 +80,5 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
         }
           }
 
-        return results;
+    return results
     }
