@@ -6,19 +6,24 @@ export const Months = ['Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
 export const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 
-export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
+export function CalculateMoney(initial, beginDate, years, risk, reinvenst, profit) {
     const tm = new Date(beginDate);
+
     const finishDate = new Date(
         tm.getFullYear() + parseInt(years.split(' ')[0]), tm.getMonth(), tm.getDate(),
     );
 
-
     const results = {timeline:[], total: {}};
+
     let investment = +initial.replace('$','');
     let totalInvestment = +initial.replace('$','');
     let balance = 0;
     let title = `${Months[tm.getMonth()]} ${ tm.getFullYear()}`;
     let calendar = [];
+    let reinvenstment = 0;
+
+    let totalProfit = 0;
+    let totalReinvestment = 0;
 
     let gain = 0;
 
@@ -53,12 +58,16 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
             });
         } else {
 
-            const profit = (totalInvestment * gain);
-            balance += profit;
+            const profit_day = (totalInvestment * gain);
+            totalReinvestment += profit_day;
+            totalProfit += profit_day;
+
+            balance += profit_day;
 
             if (balance > reinvenst) {
-                totalInvestment += balance;
+                totalInvestment += balance * profit * 0.01;
                 balance = 0;
+
                 investment = `$${reinvenst}`;
             }
 
@@ -66,7 +75,7 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
                 date: currentDate,
                 finishDate,
                 investment,
-                profit: `$${profit.toFixed(2)}`,
+                profit: `$${profit_day.toFixed(2)}`,
                 balance: `$${balance.toFixed(2)}`,
                 totalInvestment: totalInvestment.toFixed(2)
             });
@@ -80,8 +89,8 @@ export function CalculateMoney(initial, beginDate, years, risk, reinvenst) {
     }
 
     results.total =  {
-        profit: '$' + balance.toFixed(0),
-        reinvenst: 0,
+        profit:  totalProfit.toFixed(0) + investment,
+        reinvenstment: totalReinvestment.toFixed(2),
         net:  0 ,
         roi: 0
     }

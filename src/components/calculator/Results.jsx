@@ -28,7 +28,7 @@ function Results(props) {
             </div>
             <div className={cn(styles.HeaderResultSecondRow, styles.HeaderResultMixin)}>
               <div className={cn(styles.ResultCell)}><h3>Total Profits</h3><p>{values.total.profit}</p></div>
-              <div className={cn(styles.ResultCell)}><h3>Total Reinvestment</h3><p>{values.total}</p></div>
+              <div className={cn(styles.ResultCell)}><h3>Total Reinvestment</h3><p>{values.total.reinvenstment}</p></div>
               <div className={cn(styles.ResultCell)}><h3>Net Profit</h3><p>{values.total.net}</p></div>
               <div className={cn(styles.ResultCell)}><h3>ROI</h3><p>{values.total.roi}</p></div>
               <div className={cn(styles.ResultCell)}><h3>Starting Date</h3><p>{beginDate}</p></div>
